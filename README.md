@@ -9,5 +9,6 @@
 
 This is an exercise project.
 
-Note: .env file is not included.
+Note: .env  & doctrine.yaml
+files are not included.
 

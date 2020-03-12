@@ -9,6 +9,8 @@
 /vendor/
 .idea/
 .env
+config/packages/doctrine.yaml
+
 ###< symfony/framework-bundle ###
 
 ###> symfony/web-server-bundle ###
