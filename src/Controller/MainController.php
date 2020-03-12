@@ -31,7 +31,9 @@ class MainController extends AbstractController
 
         $name = $request->get('name');
 //        return new HttpFoundation\Response('<h1>Welcome to Custom Page ' . $name .' !</h1>');
-        return $this->render('home/custom.html.twig');
+        return $this->render('home/custom.html.twig', [
+            'name' => $name
+        ]);
 
     }
 }
