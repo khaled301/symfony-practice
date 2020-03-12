@@ -13,7 +13,7 @@ class MainController extends AbstractController
      */
     public function index()
     {
-        return new HttpFoundation\Response('<h1>Symfony Tutorial from freeCodeCamp!</h1>');
+//        return new HttpFoundation\Response('<h1>Symfony Tutorial from freeCodeCamp!</h1>');
     }
 
     /**
