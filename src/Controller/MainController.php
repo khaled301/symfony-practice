@@ -13,9 +13,9 @@ class MainController extends AbstractController
      */
     public function index()
     {
-//        return new HttpFoundation\Response('<h1>Symfony Tutorial from freeCodeCamp!</h1>');
         return $this->render('home/index.html.twig');
 
+//        return new HttpFoundation\Response('<h1>Symfony Tutorial from freeCodeCamp!</h1>');
     }
 
     /**
@@ -30,10 +30,10 @@ class MainController extends AbstractController
 //        dump($request);
 
         $name = $request->get('name');
-//        return new HttpFoundation\Response('<h1>Welcome to Custom Page ' . $name .' !</h1>');
         return $this->render('home/custom.html.twig', [
             'name' => $name
         ]);
 
+//        return new HttpFoundation\Response('<h1>Welcome to Custom Page ' . $name .' !</h1>');
     }
 }
