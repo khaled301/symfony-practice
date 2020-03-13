@@ -42,7 +42,12 @@ class PostController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        // to get any form error
+        // $form->getErrors();
+
+        // if any validator is used in the form we can use $form->isValid() to validate form in the controller
+
+        if ($form->isSubmitted() && $form->isValid()) {
 
             // entity manager
             $em = $this->getDoctrine()->getManager();
