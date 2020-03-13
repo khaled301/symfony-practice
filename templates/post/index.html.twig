@@ -2,6 +2,13 @@
 
 {% block body %}
 
+    {# pass a string argument to get only the messages of that type #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <h2>List of all posts</h2>
     <br>
     <table class="table table-dark table-striped">
@@ -23,7 +30,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('post.delete', {id: post.id}) }}">Delete</a>
+                    <a class="text-danger" href="{{ path('post.delete', {id: post.id}) }}">Delete</a>
                 </td>
             </tr>
         {% endfor %}
