@@ -50,4 +50,25 @@ class PostController extends AbstractController
         return new Response('Post was created!');
 
     }
+
+
+    /**
+     * @Route("/show/{id}", name="show")
+     * @param $id
+     * @param PostRepository $postRepository
+     * @return Response
+     */
+    public function show($id, PostRepository $postRepository) {
+
+        $post = $postRepository->find($id);
+
+        // die is used as there is not View has been created yet. So program will end immediately after dump the value
+        dump($post);
+        die;
+
+        //create the show view
+        return $this->render('post/show.html.twig', [
+            'post'=> $post
+        ]);
+    }
 }
