@@ -54,14 +54,12 @@ class PostController extends AbstractController
 
     /**
      * @Route("/show/{id}", name="show")
-     * @param $id
-     * @param PostRepository $postRepository
+     * @param Post $post
      * @return Response
      */
-    public function show($id, PostRepository $postRepository) {
+    public function show(Post $post) {
 
-        $post = $postRepository->find($id);
-
+        // Param Converter, it will going to give the ID and it will going to look for the post in the Post entity and find that post
         // die is used as there is not View has been created yet. So program will end immediately after dump the value
         dump($post);
         die;
