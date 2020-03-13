@@ -40,12 +40,18 @@ class PostController extends AbstractController
 
         $form = $this->createForm(PostType::class, $post);
 
-        // entity manager
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $em->persist($post);
-//
-//        $em->flush();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+
+            // entity manager
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('post.index'));
+
+        }
 
         // return a response
         return $this->render('post/create.html.twig', [
@@ -81,9 +87,7 @@ class PostController extends AbstractController
     public function remove(Post $post) {
 
         $em = $this->getDoctrine()->getManager();
-
         $em->remove($post);
-
         $em->flush();
 
         $this->addFlash('success', 'Post was removed');
