@@ -61,8 +61,8 @@ class PostController extends AbstractController
 
         // Param Converter, it will going to give the ID and it will going to look for the post in the Post entity and find that post
         // die is used as there is not View has been created yet. So program will end immediately after dump the value
-        dump($post);
-        die;
+//        dump($post);
+//        die;
 
         //create the show view
         return $this->render('post/show.html.twig', [
