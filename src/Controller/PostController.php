@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Services\UploadUserFile;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -34,9 +35,10 @@ class PostController extends AbstractController
     /**
      * @Route("/create", name="create")
      * @param Request $request
+     * @param UploadUserFile $uploadUserFile
      * @return Response
      */
-    public function create(Request $request) {
+    public function create(Request $request, UploadUserFile $uploadUserFile) {
         $post = new Post();
 
         $form = $this->createForm(PostType::class, $post);
@@ -61,12 +63,14 @@ class PostController extends AbstractController
 
             if ($file) {
 
-                $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
+//                $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
+//
+//                $file->move(
+//                    $this->getParameter('uploads_dir'),
+//                    $filename
+//                );
 
-                $file->move(
-                    $this->getParameter('uploads_dir'),
-                    $filename
-                );
+                $filename = $uploadUserFile->uploadFile($file);
 
                 $post->setImage($filename);
 
@@ -89,15 +93,15 @@ class PostController extends AbstractController
 
     /**
      * @Route("/show/{id}", name="show")
-     * @param $id
-     * @param PostRepository $postRepository
+     * @param Post $post
      * @return Response
      */
-    public function show($id, PostRepository $postRepository) {
+    public function show(Post $post) {
 
-        $post = $postRepository->findPostWithCategory($id);
-
+        // Param Converter, it will going to give the ID and it will going to look for the post in the Post entity and find that post
+        // die is used as there is not View has been created yet. So program will end immediately after dump the value
 //        dump($post);
+//        die;
 
         //create the show view
         return $this->render('post/show.html.twig', [
