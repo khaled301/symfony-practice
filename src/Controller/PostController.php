@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Services\Notification;
 use App\Services\UploadUserFile;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,9 +37,10 @@ class PostController extends AbstractController
      * @Route("/create", name="create")
      * @param Request $request
      * @param UploadUserFile $uploadUserFile
+     * @param Notification $notification
      * @return Response
      */
-    public function create(Request $request, UploadUserFile $uploadUserFile) {
+    public function create(Request $request, UploadUserFile $uploadUserFile, Notification $notification) {
         $post = new Post();
 
         $form = $this->createForm(PostType::class, $post);

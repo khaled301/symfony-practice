@@ -30,4 +30,6 @@ services:
 
 #    App\Entity\Post:
 
-
+    App\Services\Notification:
+        arguments:
+            - 'email@admin.com'
