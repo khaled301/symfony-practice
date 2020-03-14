@@ -55,8 +55,9 @@ class PostController extends AbstractController
 
             /**
              * @var UploadedFile $file
+             * Post is an array and it has property attachment
              */
-            $file = $request->files->get('attachment');
+            $file = $request->files->get('post')['attachment'];
 
             if ($file) {
 
