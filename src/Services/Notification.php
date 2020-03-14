@@ -6,10 +6,10 @@ class Notification {
 
     private $email;
 
-    public function __construct($email)
+    public function __construct($email, UploadUserFile $uploadUserFile)
     {
 
-        dump($email); die;
+        dump($email, $uploadUserFile); die;
         $this->email = $email;
 
     }
