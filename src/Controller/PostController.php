@@ -51,6 +51,9 @@ class PostController extends AbstractController
 
             // entity manager
             $em = $this->getDoctrine()->getManager();
+
+            $file = $request->files->get('attachment');
+
             $em->persist($post);
             $em->flush();
 
