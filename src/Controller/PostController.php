@@ -89,15 +89,15 @@ class PostController extends AbstractController
 
     /**
      * @Route("/show/{id}", name="show")
-     * @param Post $post
+     * @param $id
+     * @param PostRepository $postRepository
      * @return Response
      */
-    public function show(Post $post) {
+    public function show($id, PostRepository $postRepository) {
 
-        // Param Converter, it will going to give the ID and it will going to look for the post in the Post entity and find that post
-        // die is used as there is not View has been created yet. So program will end immediately after dump the value
+        $post = $postRepository->findPostWithCategory($id);
+
 //        dump($post);
-//        die;
 
         //create the show view
         return $this->render('post/show.html.twig', [

@@ -2,12 +2,12 @@
 
 {% block body %}
 
-    <h2> {{ post.title }}</h2>
+    <h2> {{ post[0]['post_title'] }}</h2>
 
-    <em>Category: {{ post.category }}</em>
+    <em>Category: {{ post[0]['cat_name'] }}</em>
 
     <hr>
 
-    <img class="img-fluid" src="{{ '/uploads/' ~ post.image }}" alt="post-image">
+    <img class="img-fluid" src="{{ '/uploads/' ~ post[0]['post_image'] }}" alt="post-image">
 
 {% endblock %}
